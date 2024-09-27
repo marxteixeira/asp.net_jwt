@@ -8,7 +8,7 @@ namespace asp.net_jwt.Services
 {
     public class TokenService
     {
-        public string Create()
+        public string Create(User user)
         {
             //handler
             var handler = new JwtSecurityTokenHandler();
@@ -25,7 +25,8 @@ namespace asp.net_jwt.Services
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 SigningCredentials = credentials,
-                Expires = DateTime.UtcNow.AddHours(2)
+                Expires = DateTime.UtcNow.AddHours(2),
+                Subject = GenerateClaims(user) //aqui ele vai gerar o payload
             };
 
             var token = handler.CreateToken(tokenDescriptor);
