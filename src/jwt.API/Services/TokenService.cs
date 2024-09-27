@@ -38,7 +38,7 @@ namespace asp.net_jwt.Services
         {
             var ci = new ClaimsIdentity();
 
-            //esse ClaimTypes.Name será o nome de USUÁRIO
+            //esse ClaimTypes.Name receberá o email como nome de USUÁRIO
             ci.AddClaim(new Claim(ClaimTypes.Name, user.Email));
             ci.AddClaim(new Claim(ClaimTypes.Email, user.Email));
             ci.AddClaim(new Claim(ClaimTypes.GivenName, user.Name));
@@ -46,7 +46,7 @@ namespace asp.net_jwt.Services
             ci.AddClaim(new Claim("id", user.Id.ToString()));
             ci.AddClaim(new Claim("image", user.Image));
 
-            //para montar os ClaimTypes de roles, vamos fazer um foreach
+            //para montar os ClaimTypes de roles
             foreach (var role in user.Roles)
             {
                 ci.AddClaim(new Claim(ClaimTypes.Role, role));

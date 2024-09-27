@@ -48,7 +48,7 @@ app.UseAuthorization();
 app.MapGet("/login", (TokenService service) =>
 {
     //Criar um novo e passar
-    var user = new User("Marx Teixeira", 1, "email@marx.com", "https://balta.io", "sdfj", new[] { "student", "premium" });
+    var user = new User("Marx Teixeira", 1, "email@marx.com", "https://site.io", "sdfj", new[] { "student", "premium" });
 
     return service.Create(user);
 });
